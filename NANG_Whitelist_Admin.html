@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NANG Whitelist Admin</title>
+<style>
+body{margin:0;background:#0b0911;color:#eee;font:14px Arial,sans-serif}
+.card{max-width:520px;margin:40px auto;padding:22px;background:#15111f;border:1px solid #3b2b50;border-radius:14px}
+h1{margin:0 0 6px;font-size:20px}.muted{color:#9d91aa;font-size:12px}
+input{width:100%;box-sizing:border-box;padding:12px;margin:7px 0;border-radius:9px;border:1px solid #403050;background:#0f0c16;color:white}
+button{padding:11px 14px;border:0;border-radius:9px;background:#7044ad;color:white;font-weight:700}
+.note{margin-top:15px;padding:12px;border-radius:9px;background:#0f0c16;color:#c6bdce;font-size:12px;line-height:1.5}
+</style>
+</head>
+<body>
+<div class="card">
+<h1>NANG WHITELIST</h1>
+<div class="muted">Free • GitHub Actions • tanpa PAT di HTML</div>
+<input id="repo" placeholder="USERNAME/REPOSITORY">
+<button onclick="openActions()">BUKA ADMIN GITHUB</button>
+<div class="note">
+Untuk keamanan, HTML statis tidak menyimpan GitHub token.
+Setelah halaman GitHub Actions terbuka, pilih <b>NANG Whitelist Update</b> → <b>Run workflow</b> → pilih <b>add/remove</b> → isi UserId → Run.
+<br><br>
+Workflow memakai <b>GITHUB_TOKEN</b> otomatis dari GitHub, sehingga tidak perlu membuat token pribadi untuk sistem ini.
+</div>
+</div>
+<script>
+function openActions(){
+  const repo=document.getElementById("repo").value.trim();
+  if(!/^[^/]+\/[^/]+$/.test(repo)){alert("Isi USERNAME/REPOSITORY");return}
+  location.href="https://github.com/"+repo+"/actions/workflows/nang-whitelist.yml";
+}
+</script>
+</body>
+</html>
